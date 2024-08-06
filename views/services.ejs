@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Spark Studio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            font-family: 'Exo 2', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #d9ebff;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .navbar {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            background-color: #000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid #3b3c3d; 
+        }
+
+        .navbar .nav-link {
+            border-radius: 5px;
+            padding: 10px 20px;
+            color: #000;
+            background-color: #d9ebff;
+            text-transform: none; 
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .navbar .nav-link.btn-primary {
+            background-color: #000;
+            border: 1px solid #007bff;
+            color: #ffffff;
+        }
+
+        .navbar .nav-link.btn-primary:hover {
+            background-color: #030b13;
+            border-color: #0e78ea;
+            color: #007bff;
+        }
+
+        .dashboard-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 20px;
+            margin-right: 10px;
+        }
+
+        .dashboard-item {
+            width: calc(50% - 10px);
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-item {
+                width: 100%;
+            }
+        }
+
+        .toolkit {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #000;
+            border: 1px solid #3b3c3d;
+            border-radius: 10px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .toolkit a {
+            color: #d9ebff;
+            text-decoration: none;
+        }
+
+        .toolkit a:hover {
+            color: #d9ebff;
+        }
+
+        .toolkit a i {
+            margin-right: 5px;
+        }
+
+    </style>
+</head>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var profileTrigger = document.getElementById('profile-trigger');
+        var profileDropdown = document.getElementById('profile-dropdown');
+
+        function toggleDropdown() {
+            profileDropdown.classList.toggle('show');
+        }
+
+        profileTrigger.addEventListener('mouseenter', toggleDropdown);
+        profileTrigger.addEventListener('mouseleave', toggleDropdown);
+        profileDropdown.addEventListener('mouseenter', toggleDropdown);
+        profileDropdown.addEventListener('mouseleave', toggleDropdown);
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var fullScreenButtons = document.querySelectorAll('.toolkit a[title="View in Full Screen"]');
+
+        fullScreenButtons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                var iframe = this.closest('.position-relative').querySelector('iframe');
+
+                if (iframe.requestFullscreen) {
+                    iframe.requestFullscreen();
+                } else if (iframe.mozRequestFullScreen) {
+                    iframe.mozRequestFullScreen();
+                } else if (iframe.webkitRequestFullscreen) {
+                    iframe.webkitRequestFullscreen();
+                } else if (iframe.msRequestFullscreen) {
+                    iframe.msRequestFullscreen();
+                }
+            });
+        });
+    });
+</script>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <h3>Our Services</h3>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary mx-2" href="/landing_page">Home</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="dashboard-container">
+            <div class="dashboard-item">
+                <div class="position-relative">
+                    <iframe title="Dashboard 1" width="100%" height="300" src="https://app.powerbi.com/reportEmbed?reportId=b4854e5d-07a0-4e96-a33c-6c5174c38f73&autoAuth=true&ctid=c7876be7-2292-4d12-bc78-571b56e852d9" frameborder="0" allowFullScreen="true"></iframe>
+                    <div class="toolkit">
+                        <a href="#" title="Share"><i class="fas fa-share"></i> Share</a>
+                        <a href="#" title="View in Full Screen"><i class="fas fa-expand"></i> Full Screen</a>
+                        <a href="#" title="Report Error"><i class="fas fa-exclamation-triangle"></i> Report Error</a>
+                        <a href="#" title="Note"><i class="fas fa-sticky-note"></i> Note</a>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-item">
+                <div class="position-relative">
+                    <iframe title="Dashboard 2" width="100%" height="300" src="https://app.powerbi.com/reportEmbed?reportId=19d19d3a-1d58-4962-8c9b-13e94084689e&autoAuth=true&ctid=c7876be7-2292-4d12-bc78-571b56e852d9" frameborder="0" allowFullScreen="true"></iframe>
+                    <div class="toolkit">
+                        <a href="#" title="Share"><i class="fas fa-share"></i> Share</a>
+                        <a href="#" title="View in Full Screen"><i class="fas fa-expand"></i> Full Screen</a>
+                        <a href="#" title="Report Error"><i class="fas fa-exclamation-triangle"></i> Report Error</a>
+                        <a href="#" title="Note"><i class="fas fa-sticky-note"></i> Note</a>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-item">
+                <div class="position-relative">
+                    <iframe title="Dashboard 3" width="100%" height="300" src="https://app.powerbi.com/reportEmbed?reportId=7e0e5bb5-6ade-458b-ace3-b2c471fe4053&autoAuth=true&ctid=c7876be7-2292-4d12-bc78-571b56e852d9" frameborder="0" allowFullScreen="true"></iframe>
+                    <div class="toolkit">
+                        <a href="#" title="Share"><i class="fas fa-share"></i> Share</a>
+                        <a href="#" title="View in Full Screen"><i class="fas fa-expand"></i> Full Screen</a>
+                        <a href="#" title="Report Error"><i class="fas fa-exclamation-triangle"></i> Report Error</a>
+                        <a href="#" title="Note"><i class="fas fa-sticky-note"></i> Note</a>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-item">
+                <div class="position-relative">
+                    <iframe title="Dashboard 4" width="100%" height="300" src="https://app.powerbi.com/reportEmbed?reportId=01a435b2-3477-4429-b281-eb4b52bb0814&autoAuth=true&ctid=c7876be7-2292-4d12-bc78-571b56e852d9" frameborder="0" allowFullScreen="true"></iframe>
+                    <div class="toolkit">
+                        <a href="#" title="Share"><i class="fas fa-share"></i> Share</a>
+                        <a href="#" title="View in Full Screen"><i class="fas fa-expand"></i> Full Screen</a>
+                        <a href="#" title="Report Error"><i class="fas fa-exclamation-triangle"></i> Report Error</a>
+                        <a href="#" title="Note"><i class="fas fa-sticky-note"></i> Note</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
